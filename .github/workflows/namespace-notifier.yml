@@ -17,7 +17,7 @@ jobs:
         username: ${{ secrets.MAIL_USERNAME }}
         password: ${{ secrets.MAIL_PASSWORD }}
         subject: GITHUB ACTIONS ${{ github.repository }} updated !!!
-        body: Maintainers! There are some changes in ${{ github.repository }} repository.
+        body: Maintainers, there are some changes in ${{ github.repository }} repository.
         to: ${{ secrets.MAIL_RECEIVER }}
         from: ${{ github.repository }}
 
