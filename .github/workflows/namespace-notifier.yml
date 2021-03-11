@@ -16,10 +16,10 @@ jobs:
         server_port: 465
         username: ${{ secrets.MAIL_USERNAME }}
         password: ${{ secrets.MAIL_PASSWORD }}
-        subject: GITHUB ACTIONS ${{ github.repository }} updated !!!
+        subject: [${{ github.repository }}] Registry Namespace updated
         body: Maintainers, there are some changes in ${{ github.repository }} repository.
-        to: ${{ secrets.MAIL_RECEIVER }}
-        from: ${{ github.repository }}
+        to: ${{ secrets.CNB_MAINTAINERS_EMAIL }}
+        from: ${{ secrets.MAIL_SENDER }}
 
 
 
