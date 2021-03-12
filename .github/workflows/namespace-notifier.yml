@@ -15,4 +15,4 @@ jobs:
       env:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         SLACK_USERNAME: ${{ github.repository }}
-	SLACK_MESSAGE: A namespace has been updated or created.
+        SLACK_MESSAGE: A namespace has been updated or created.
