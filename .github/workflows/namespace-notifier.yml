@@ -2,7 +2,7 @@ name: Buildpack Registry Namespace Notifier
 on: 
   push:
     branches:
-      - slack-test
+      - main
 
 jobs:
   slack-notifier:
