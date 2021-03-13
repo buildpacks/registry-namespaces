@@ -2,7 +2,7 @@ name: Buildpack Registry Namespace Notifier
 on: 
   push:
     branches:
-      - main-test
+      - main
 
 jobs:
   email-maintainers:
@@ -22,5 +22,15 @@ jobs:
         from: ${{ secrets.MAIL_SENDER }}
 
 
-
+  slack-notifier:
+    name: Slack Channel Notify
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Slack Channel Notify
+      uses: rtCamp/action-slack-notify@v2.1.2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_USERNAME: ${{ github.repository }}
+        SLACK_MESSAGE: A namespace has been updated or created.
 
