@@ -5,6 +5,23 @@ on:
       - main
 
 jobs:
+  email-maintainers:
+    name: Email Maintainers
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send mail
+      uses: dawidd6/action-send-mail@v2
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        username: ${{ secrets.MAIL_USERNAME }}
+        password: ${{ secrets.MAIL_PASSWORD }}
+        subject: [${{ github.repository }}] Registry Namespace updated
+        body: Maintainers, there are some changes in ${{ github.repository }} repository.
+        to: ${{ secrets.CNB_MAINTAINERS_EMAIL }}
+        from: ${{ secrets.MAIL_SENDER }}
+
+
   slack-notifier:
     name: Slack Channel Notify
     runs-on: ubuntu-latest
@@ -16,3 +33,4 @@ jobs:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         SLACK_USERNAME: ${{ github.repository }}
         SLACK_MESSAGE: A namespace has been updated or created.
+
