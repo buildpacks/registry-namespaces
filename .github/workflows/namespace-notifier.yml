@@ -1,5 +1,5 @@
 name: Buildpack Registry Namespace Notifier
-on: 
+on:
   push:
     branches:
       - main
@@ -14,9 +14,9 @@ jobs:
       with:
         server_address: smtp.gmail.com
         server_port: 465
-        username: ${{ secrets.MAIL_USERNAME }}
-        password: ${{ secrets.MAIL_PASSWORD }}
-        subject: [${{ github.repository }}] Registry Namespace updated
+        username: "${{ secrets.MAIL_USERNAME }}"
+        password: "${{ secrets.MAIL_PASSWORD }}"
+        subject: "[${{ github.repository }}] Registry Namespace updated"
         body: Maintainers, there are some changes in ${{ github.repository }} repository.
         to: ${{ secrets.CNB_MAINTAINERS_EMAIL }}
         from: ${{ secrets.MAIL_SENDER }}
