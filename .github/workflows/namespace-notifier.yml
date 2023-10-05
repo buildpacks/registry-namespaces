@@ -26,11 +26,12 @@ jobs:
     name: Slack Channel Notify
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Slack Channel Notify
-      uses: rtCamp/action-slack-notify@v2.1.2
+      uses: rtCamp/action-slack-notify@v2.2.1
       env:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         SLACK_USERNAME: ${{ github.repository }}
-        SLACK_MESSAGE: A namespace has been updated or created.
-
+        # Only include the commit SHA/message in the notification, and not the event type or ref
+        # (which are always 'push' and 'refs/heads/main'), or the GitHub Actions workflow URL.
+        MSG_MINIMAL: "commit"
